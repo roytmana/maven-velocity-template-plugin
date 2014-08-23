@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.peacetech.maven.it</groupId>
+  <artifactId>simple-it</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <description>A simple IT verifying the basic use case.</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>@project.groupId@</groupId>
+        <artifactId>@project.artifactId@</artifactId>
+        <version>@project.version@</version>
+        <executions>
+          <execution>
+            <id>generate</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <transformations>
+                <transformation>
+                  <splitNestedProperties>true</splitNestedProperties>
+                  <properties>
+                    <key1>value1</key1>
+                    <key2>value2</key2>
+                    <a.b.c>abc</a.b.c>
+                  </properties>
+                  <templates>
+                    <template>
+                      <templateFile>${project.basedir}/templates/test.txt.vm</templateFile>
+                      <outputFile>${project.basedir}/out/test.txt</outputFile>
+                    </template>
+                  </templates>
+                </transformation>
+              </transformations>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>p1</id>
+      <properties>
+        <p1-1>profile1-prop</p1-1>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+  </profiles>
+</project>

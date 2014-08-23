@@ -1,0 +1,8 @@
+Hello
+
+project.finalName = ${project.finalName}
+project.artifactId = ${project.artifactId}
+project.properties = ${project.properties}
+
+key1=${key1}
+a.b.c=${a.b.c}
