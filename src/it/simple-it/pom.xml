@@ -11,6 +11,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <x.y.z>xyz</x.y.z>
   </properties>
 
   <build>

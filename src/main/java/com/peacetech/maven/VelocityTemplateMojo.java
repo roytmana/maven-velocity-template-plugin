@@ -79,7 +79,8 @@ public class VelocityTemplateMojo extends AbstractMojo {
     ctx.put("project", project);
     ctx.put("system", System.getProperties());
     ctx.put("env", System.getenv());
-    return new VelocityContext(transformation.getCombinedProperties(transformation.isSplitNestedProperties()), ctx);
+    return new VelocityContext(transformation.getCombinedProperties(project.getProperties(),
+                                                                    transformation.isSplitNestedProperties()), ctx);
   }
 
   @Override public String toString() {

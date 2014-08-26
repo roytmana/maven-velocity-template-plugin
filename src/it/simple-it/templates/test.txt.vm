@@ -1,8 +1,12 @@
 Hello
 
 project.finalName = ${project.finalName}
+finalName = ${finalName}
 project.artifactId = ${project.artifactId}
 project.properties = ${project.properties}
 
 key1=${key1}
 a.b.c=${a.b.c}
+project.properties.x.y.z=${project.properties.x.y.z} / ${project.properties.get('x.y.z')}
+x.y.z=${x.y.z}
+
