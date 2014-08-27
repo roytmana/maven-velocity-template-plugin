@@ -1,8 +1,16 @@
 package com.peacetech.maven;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.project.MavenProject;
+import org.codehaus.plexus.interpolation.InterpolationException;
+import org.codehaus.plexus.interpolation.ObjectBasedValueSource;
+import org.codehaus.plexus.interpolation.PropertiesBasedValueSource;
+import org.codehaus.plexus.interpolation.StringSearchInterpolator;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,8 +21,9 @@ public class Transformation {
   private Properties properties;
   private File[] propertyFiles;
   private boolean splitNestedProperties;
+  private boolean splitProjectNestedProperties;
   private String propertiesName;
-  private String exposeProjectProperties = "merge";
+  private String exposeProjectProperties = "no";
   private String projectPropertiesName = "projectProperties";
 
   public Template[] getTemplates() {
@@ -49,6 +58,14 @@ public class Transformation {
     this.splitNestedProperties = splitNestedProperties;
   }
 
+  public boolean isSplitProjectNestedProperties() {
+    return splitProjectNestedProperties;
+  }
+
+  public void setSplitProjectNestedProperties(boolean splitProjectNestedProperties) {
+    this.splitProjectNestedProperties = splitProjectNestedProperties;
+  }
+
   public String getPropertiesName() {
     return propertiesName;
   }
@@ -77,42 +94,95 @@ public class Transformation {
     this.projectPropertiesName = projectPropertiesName;
   }
 
-  public Map<Object, Object> getCombinedProperties(Properties projectProperties, boolean splitNestedProperties) {
+  //todo properties and propertyFiles values must be resolved in case they have variables
+  public Map<Object, Object> getCombinedProperties(MavenProject project, boolean splitNestedProperties) throws MojoExecutionException {
+    Properties projectProperties = project.getProperties();
     Properties ret = new Properties();
     if ("merge".equals(exposeProjectProperties) && projectProperties != null) {
       for (String name : projectProperties.stringPropertyNames()) {
-        if (splitNestedProperties && !name.startsWith("project.")) {
-          setNestedProperty(name, projectProperties.getProperty(name), ret);
+        if (splitProjectNestedProperties && !name.startsWith("project.")) {
+          setNestedProperty(name, getTyped(projectProperties.getProperty(name)), ret);
         } else {
-          ret.put(name, projectProperties.getProperty(name));
+          ret.put(name, getTyped(projectProperties.getProperty(name)));
         }
       }
     }
-    //todo process propertyFiles first so that properties take precedence
+    if (propertyFiles != null) {
+      StringSearchInterpolator interpolator = new StringSearchInterpolator();
+      interpolator.addValueSource(new ObjectBasedValueSource(project));
+      interpolator.addValueSource(new ObjectBasedValueSource(new GetProject(project)));
+      if (projectProperties != null) {
+        interpolator.addValueSource(new PropertiesBasedValueSource(projectProperties));
+        Properties pp = new Properties();
+        for (String name : projectProperties.stringPropertyNames()) {
+          pp.put(name.startsWith("project.properties.") ? name : "project.properties." + name, projectProperties.getProperty(name));
+        }
+        interpolator.addValueSource(new PropertiesBasedValueSource(pp));
+      }
+
+      for (File file : propertyFiles) {
+        Properties p = new Properties();
+        try {
+          p.load(new FileInputStream(file));
+        } catch (IOException e) {
+          throw new MojoExecutionException("Error loading property file " + file, e);
+        }
+        for (String name : p.stringPropertyNames()) {
+          Object value = null;
+          try {
+            value = getTyped(interpolator.interpolate(p.getProperty(name)));
+          } catch (InterpolationException e) {
+            throw new MojoExecutionException("Error interpolating property '" + name + "' in file " + file, e);
+          }
+          if (splitNestedProperties) {
+            setNestedProperty(name, value, ret);
+          } else {
+            ret.put(name, value);
+          }
+        }
+      }
+    }
+
     if (properties != null) {
       for (String name : properties.stringPropertyNames()) {
         if (splitNestedProperties) {
-          setNestedProperty(name, properties.getProperty(name), ret);
+          setNestedProperty(name, getTyped(properties.getProperty(name)), ret);
         } else {
-          ret.put(name, properties.getProperty(name));
+          ret.put(name, getTyped(properties.getProperty(name)));
         }
       }
     }
+
     if (propertiesName != null) {
       Map<Object, Object> ctx = new HashMap<Object, Object>();
       ctx.put(propertiesName, ret);
       if ("property".equals(exposeProjectProperties) && projectProperties != null) {
         ctx.put((projectPropertiesName == null ? "projectProperties" : projectPropertiesName),
-                splitNestedProperties(projectProperties, splitNestedProperties, true));
+                splitNestedProperties(projectProperties, splitProjectNestedProperties, true));
       }
       return ctx;
     } else {
       if ("property".equals(exposeProjectProperties) && projectProperties != null) {
         ret.put((projectPropertiesName == null ? "projectProperties" : projectPropertiesName),
-                splitNestedProperties(projectProperties, splitNestedProperties, true));
+                splitNestedProperties(projectProperties, splitProjectNestedProperties, true));
       }
       return ret;
     }
+  }
+
+  private Object getTyped(String str) {
+    if (str == null || str.isEmpty()) {
+      return str;
+    } else if ("true".equals(str)) {
+      return true;
+    } else if ("false".equals(str)) {
+      return false;
+    } else if (NumberUtils.isNumber(str)) {
+      return NumberUtils.createNumber(str);
+    } else {
+      return str;
+    }
+
   }
 
   private Properties splitNestedProperties(Properties properties, boolean split, boolean copy) {
@@ -160,5 +230,17 @@ public class Transformation {
     sb.append(", projectPropertiesName='").append(projectPropertiesName).append('\'');
     sb.append('}');
     return sb.toString();
+  }
+
+  public static class GetProject {
+    private final MavenProject project;
+
+    public GetProject(MavenProject project) {
+      this.project = project;
+    }
+
+    public MavenProject getProject() {
+      return project;
+    }
   }
 }

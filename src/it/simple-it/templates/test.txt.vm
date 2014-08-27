@@ -4,9 +4,17 @@ project.finalName = ${project.finalName}
 finalName = ${finalName}
 project.artifactId = ${project.artifactId}
 project.properties = ${project.properties}
+project.build.finalName=${project.build.finalName}
+project.properties.applicationName=${project.properties.applicationName}
+webapp.context1=${webapp.context1}
+webapp.context2=${webapp.context2}
+webapp.context3=${webapp.context3}
+file.artifactId=${file.artifactId}
+file.project.artifactId=${file.project.artifactId}
 
 key1=${key1}
 a.b.c=${a.b.c}
+myProps.a.b.c=${myProps.a.b.c}
 project.properties.x.y.z=${project.properties.x.y.z} / ${project.properties.get('x.y.z')}
 x.y.z=${x.y.z}
 

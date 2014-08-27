@@ -16,6 +16,7 @@ public class VelocityMavenLogger implements LogChute {
 
   @Override public void log(int level, String message) {
     switch (level) {
+      case LogChute.TRACE_ID:
       case LogChute.DEBUG_ID:
         mavenLogger.debug(message);
         break;
@@ -36,6 +37,7 @@ public class VelocityMavenLogger implements LogChute {
 
   @Override public void log(int level, String message, Throwable exception) {
     switch (level) {
+      case LogChute.TRACE_ID:
       case LogChute.DEBUG_ID:
         mavenLogger.debug(message, exception);
         break;

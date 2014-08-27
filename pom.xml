@@ -120,4 +120,16 @@
       </build>
     </profile>
   </profiles>
+
+  <distributionManagement>
+    <repository>
+      <id>peacetech-releases</id>
+      <url>http://ptibuild.peacetech.com/nexus/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>peacetech-snapshots</id>
+      <url>http://ptibuild.peacetech.com/nexus/content/repositories/snapshots</url>
+      <uniqueVersion>false</uniqueVersion>
+    </snapshotRepository>
+  </distributionManagement>
 </project>

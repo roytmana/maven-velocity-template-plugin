@@ -5,13 +5,15 @@
 
   <groupId>com.peacetech.maven.it</groupId>
   <artifactId>simple-it</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1-SNAPSHOT</version>
 
   <description>A simple IT verifying the basic use case.</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <x.y.z>xyz</x.y.z>
+    <applicationName>MyApplicationName</applicationName>
+    <deployment.name>${project.build.finalName}-${project.version}</deployment.name>
   </properties>
 
   <build>
@@ -31,11 +33,15 @@
               <transformations>
                 <transformation>
                   <splitNestedProperties>true</splitNestedProperties>
+                  <!--<propertiesName>myProps</propertiesName>-->
                   <properties>
                     <key1>value1</key1>
                     <key2>value2</key2>
                     <a.b.c>abc</a.b.c>
                   </properties>
+                  <propertyFiles>
+                    <propertyFile>${project.basedir}/test.properties</propertyFile>
+                  </propertyFiles>
                   <templates>
                     <template>
                       <templateFile>${project.basedir}/templates/test.txt.vm</templateFile>

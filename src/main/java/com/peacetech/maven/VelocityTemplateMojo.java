@@ -9,10 +9,15 @@ import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
+import org.codehaus.plexus.interpolation.InterpolationException;
+import org.codehaus.plexus.interpolation.PropertiesBasedValueSource;
+import org.codehaus.plexus.interpolation.StringSearchInterpolator;
 
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
 public class VelocityTemplateMojo extends AbstractMojo {
@@ -74,12 +79,15 @@ public class VelocityTemplateMojo extends AbstractMojo {
     return engine;
   }
 
-  protected VelocityContext createVelocityContext(Transformation transformation) {
+  protected VelocityContext createVelocityContext(Transformation transformation) throws MojoExecutionException {
     VelocityContext ctx = new VelocityContext();
     ctx.put("project", project);
     ctx.put("system", System.getProperties());
     ctx.put("env", System.getenv());
-    return new VelocityContext(transformation.getCombinedProperties(project.getProperties(),
+    Map<String, Object> util = new HashMap<String, Object>();
+    util.put("REF", "$");
+    ctx.put("velocityUtil", util);
+    return new VelocityContext(transformation.getCombinedProperties(project,
                                                                     transformation.isSplitNestedProperties()), ctx);
   }
 
@@ -88,5 +96,13 @@ public class VelocityTemplateMojo extends AbstractMojo {
     sb.append("transformations=").append(Arrays.toString(transformations) + "\n" + project.getProperties());
     sb.append('}');
     return sb.toString();
+  }
+
+  public static void main(String[] args) throws InterpolationException {
+    StringSearchInterpolator inter = new StringSearchInterpolator();
+    inter.addValueSource(new PropertiesBasedValueSource(System.getProperties()));
+    String p = "${java.home}";
+    System.out.println(p + ": " + inter.interpolate(p));
+
   }
 }
