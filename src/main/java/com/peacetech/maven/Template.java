@@ -8,25 +8,23 @@
 
 package com.peacetech.maven;
 
-import java.io.File;
-
 public class Template {
-  private File templateFile;
-  private File outputFile;
+  private String templateFile;
+  private String outputFile;
 
-  public File getTemplateFile() {
+  public String getTemplateFile() {
     return templateFile;
   }
 
-  public void setTemplateFile(File templateFile) {
+  public void setTemplateFile(String templateFile) {
     this.templateFile = templateFile;
   }
 
-  public File getOutputFile() {
+  public String getOutputFile() {
     return outputFile;
   }
 
-  public void setOutputFile(File outputFile) {
+  public void setOutputFile(String outputFile) {
     this.outputFile = outputFile;
   }
 

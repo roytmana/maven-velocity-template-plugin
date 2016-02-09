@@ -40,12 +40,13 @@
                     <a.b.c>abc</a.b.c>
                   </properties>
                   <propertyFiles>
-                    <propertyFile>${project.basedir}/test.properties</propertyFile>
+                    <propertyFile>${project.basedir}/filters/test1.properties</propertyFile>
+                    <propertyFile>${project.basedir}/filters/test.properties</propertyFile>
                   </propertyFiles>
                   <templates>
                     <template>
                       <templateFile>${project.basedir}/templates/test.txt.vm</templateFile>
-                      <outputFile>${project.basedir}/out/test.txt</outputFile>
+                      <outputFile>${project.basedir}/${test_out.dir}/test.txt</outputFile>
                     </template>
                   </templates>
                 </transformation>

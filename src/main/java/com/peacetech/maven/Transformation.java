@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Properties;
 
 public class Transformation {
+
   private Template[] templates;
   private Properties properties;
   private File[] propertyFiles;
@@ -95,13 +96,15 @@ public class Transformation {
   }
 
   //todo properties and propertyFiles values must be resolved in case they have variables
-  public Map<Object, Object> getCombinedProperties(MavenProject project, boolean splitNestedProperties) throws MojoExecutionException {
+  public Map<Object, Object> getCombinedProperties(MavenProject project, boolean splitNestedProperties,
+                                                   File propertiesFile) throws MojoExecutionException {
+
     Properties projectProperties = project.getProperties();
     Properties ret = new Properties();
     if ("merge".equals(exposeProjectProperties) && projectProperties != null) {
       for (String name : projectProperties.stringPropertyNames()) {
         if (splitProjectNestedProperties && !name.startsWith("project.")) {
-          setNestedProperty(name, getTyped(projectProperties.getProperty(name)), ret);
+          setNestedProperty(name, getTyped(projectProperties.getProperty(name)), ret, true);
         } else {
           ret.put(name, getTyped(projectProperties.getProperty(name)));
         }
@@ -120,22 +123,22 @@ public class Transformation {
         interpolator.addValueSource(new PropertiesBasedValueSource(pp));
       }
 
-      for (File file : propertyFiles) {
+      if (propertiesFile != null) {
         Properties p = new Properties();
         try {
-          p.load(new FileInputStream(file));
+          p.load(new FileInputStream(propertiesFile));
         } catch (IOException e) {
-          throw new MojoExecutionException("Error loading property file " + file, e);
+          throw new MojoExecutionException("Error loading property file " + propertiesFile, e);
         }
         for (String name : p.stringPropertyNames()) {
           Object value = null;
           try {
             value = getTyped(interpolator.interpolate(p.getProperty(name)));
           } catch (InterpolationException e) {
-            throw new MojoExecutionException("Error interpolating property '" + name + "' in file " + file, e);
+            throw new MojoExecutionException("Error interpolating property '" + name + "' in file " + propertiesFile, e);
           }
           if (splitNestedProperties) {
-            setNestedProperty(name, value, ret);
+            setNestedProperty(name, value, ret, true);
           } else {
             ret.put(name, value);
           }
@@ -146,7 +149,7 @@ public class Transformation {
     if (properties != null) {
       for (String name : properties.stringPropertyNames()) {
         if (splitNestedProperties) {
-          setNestedProperty(name, getTyped(properties.getProperty(name)), ret);
+          setNestedProperty(name, getTyped(properties.getProperty(name)), ret, true);
         } else {
           ret.put(name, getTyped(properties.getProperty(name)));
         }
@@ -190,7 +193,7 @@ public class Transformation {
       Properties splitProperties = new Properties();
       for (String name : properties.stringPropertyNames()) {
         if (split) {
-          setNestedProperty(name, properties.getProperty(name), splitProperties);
+          setNestedProperty(name, properties.getProperty(name), splitProperties, true);
         } else {
           splitProperties.put(name, properties.getProperty(name));
         }
@@ -202,9 +205,12 @@ public class Transformation {
   }
 
   @SuppressWarnings("unchecked")
-  private void setNestedProperty(String property, Object value, Map<Object, Object> map) {
+  private void setNestedProperty(String property, Object value, Map<Object, Object> map, boolean copyFlatProperty) {
     String[] split = property.split("\\.", 2);
     if (split.length > 1) {
+      if (copyFlatProperty) {
+        map.put(property, value);
+      }
       Object o = map.get(split[0]);
       if (o == null) {
         o = new HashMap<String, Object>();
@@ -213,7 +219,7 @@ public class Transformation {
         throw new IllegalArgumentException("Error splitting nested property '" + property + ", at " + split[0] + ". Property with name " +
                                            split[0] + " already present and is a scalar value " + o);
       }
-      setNestedProperty(split[1], value, (Map<Object, Object>)o);
+      setNestedProperty(split[1], value, (Map<Object, Object>)o, true);
     } else {
       map.put(property, value);
     }
