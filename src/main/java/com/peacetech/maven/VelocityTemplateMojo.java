@@ -15,9 +15,12 @@ import org.codehaus.plexus.interpolation.StringSearchInterpolator;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 @Mojo(name = "generate", defaultPhase = LifecyclePhase.PROCESS_SOURCES)
 public class VelocityTemplateMojo extends AbstractMojo {
@@ -65,19 +68,25 @@ public class VelocityTemplateMojo extends AbstractMojo {
         throw new MojoExecutionException("Error creating output directory: " + outputDir.getAbsolutePath());
       }
 
-      getLog().info("Loading template " + template.getTemplateFile());
+      File templateFile = new File(interpolator.interpolate(template.getTemplateFile()));
 
-      Reader reader = new InputStreamReader(new FileInputStream(template.getTemplateFile()), getCharset());
-      try {
-        getLog().info("Writing " + outputFile);
-        Writer writer = new OutputStreamWriter(new FileOutputStream(outputFile), getCharset());
+      if (template.isCopy()) {
+        getLog().info("Copying " + templateFile + " to " + outputFile);
+        Files.copy(templateFile.toPath(), outputFile.toPath(), REPLACE_EXISTING);
+      } else {
+        getLog().info("Loading template " + templateFile);
+        Reader reader = new InputStreamReader(new FileInputStream(templateFile), getCharset());
         try {
-          velocity.evaluate(ctx, writer, "velocity-maven-plugin", reader);
+          getLog().info("Writing " + outputFile);
+          Writer writer = new OutputStreamWriter(new FileOutputStream(outputFile), getCharset());
+          try {
+            velocity.evaluate(ctx, writer, "velocity-maven-plugin", reader);
+          } finally {
+            writer.close();
+          }
         } finally {
-          writer.close();
+          reader.close();
         }
-      } finally {
-        reader.close();
       }
     } catch (Exception e) {
       throw new MojoExecutionException("Error processing template", e);

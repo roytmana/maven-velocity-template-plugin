@@ -11,6 +11,7 @@ package com.peacetech.maven;
 public class Template {
   private String templateFile;
   private String outputFile;
+  private boolean copy;
 
   public String getTemplateFile() {
     return templateFile;
@@ -26,6 +27,14 @@ public class Template {
 
   public void setOutputFile(String outputFile) {
     this.outputFile = outputFile;
+  }
+
+  public boolean isCopy() {
+    return copy;
+  }
+
+  public void setCopy(boolean copy) {
+    this.copy = copy;
   }
 
   @Override public String toString() {
