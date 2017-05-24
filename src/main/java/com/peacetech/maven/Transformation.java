@@ -97,7 +97,7 @@ public class Transformation {
 
   //todo properties and propertyFiles values must be resolved in case they have variables
   public Map<Object, Object> getCombinedProperties(MavenProject project, boolean splitNestedProperties,
-                                                   File propertiesFile) throws MojoExecutionException {
+                                                   Properties commonProperties, File propertiesFile) throws MojoExecutionException {
 
     Properties projectProperties = project.getProperties();
     Properties ret = new Properties();
@@ -110,19 +110,31 @@ public class Transformation {
         }
       }
     }
-    if (propertyFiles != null) {
-      StringSearchInterpolator interpolator = new StringSearchInterpolator();
-      interpolator.addValueSource(new ObjectBasedValueSource(project));
-      interpolator.addValueSource(new ObjectBasedValueSource(new GetProject(project)));
-      if (projectProperties != null) {
-        interpolator.addValueSource(new PropertiesBasedValueSource(projectProperties));
-        Properties pp = new Properties();
-        for (String name : projectProperties.stringPropertyNames()) {
-          pp.put(name.startsWith("project.properties.") ? name : "project.properties." + name, projectProperties.getProperty(name));
-        }
-        interpolator.addValueSource(new PropertiesBasedValueSource(pp));
-      }
 
+    StringSearchInterpolator interpolator = new StringSearchInterpolator();
+    interpolator.addValueSource(new ObjectBasedValueSource(project));
+    interpolator.addValueSource(new ObjectBasedValueSource(new GetProject(project)));
+    if (projectProperties != null) {
+      interpolator.addValueSource(new PropertiesBasedValueSource(projectProperties));
+      Properties pp = new Properties();
+      for (String name : projectProperties.stringPropertyNames()) {
+        pp.put(name.startsWith("project.properties.") ? name : "project.properties." + name, projectProperties.getProperty(name));
+      }
+      interpolator.addValueSource(new PropertiesBasedValueSource(pp));
+    }
+
+    if (commonProperties != null) {
+      for (String name : commonProperties.stringPropertyNames()) {
+        if (splitNestedProperties) {
+          setNestedProperty(name, getTyped(commonProperties.getProperty(name)), ret, true);
+        } else {
+          ret.put(name, getTyped(commonProperties.getProperty(name)));
+        }
+      }
+      interpolator.addValueSource(new PropertiesBasedValueSource(commonProperties));
+    }
+
+    if (propertyFiles != null) {
       if (propertiesFile != null) {
         Properties p = new Properties();
         try {

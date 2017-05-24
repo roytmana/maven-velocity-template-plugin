@@ -18,3 +18,4 @@ myProps.a.b.c=${myProps.a.b.c}
 project.properties.x.y.z=${project.properties.x.y.z} / ${project.properties.get('x.y.z')}
 x.y.z=${x.y.z}
 
+globalProperty1=${globalProperty1}

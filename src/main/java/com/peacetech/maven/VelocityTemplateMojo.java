@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
@@ -26,6 +27,9 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 public class VelocityTemplateMojo extends AbstractMojo {
   @Parameter(defaultValue = "${project}", readonly = true)
   private MavenProject project;
+
+  @Parameter(property = "properties", required = false)
+  private Properties properties = new Properties();
 
   @Parameter(property = "transformation", required = false)
   private Transformation[] transformations;
@@ -36,15 +40,16 @@ public class VelocityTemplateMojo extends AbstractMojo {
   private final VelocityEngine velocity = createVelocityEngine();
 
   public void execute() throws MojoExecutionException {
+    System.out.println("Global Properties: " + properties);
     for (Transformation transformation : transformations) {
       for (Template template : transformation.getTemplates()) {
         if (transformation.getPropertyFiles().length == 0) {
-          VelocityContext ctx = createVelocityContext(transformation, null);
-          evaluateTemplate(ctx, template, transformation, null);
+          VelocityContext ctx = createVelocityContext(transformation, properties, null);
+          evaluateTemplate(ctx, template, transformation, properties, null);
         } else {
           for (File propertyFile : transformation.getPropertyFiles()) {
-            VelocityContext ctx = createVelocityContext(transformation, propertyFile);
-            evaluateTemplate(ctx, template, transformation, propertyFile);
+            VelocityContext ctx = createVelocityContext(transformation, properties, propertyFile);
+            evaluateTemplate(ctx, template, transformation, properties, propertyFile);
           }
         }
       }
@@ -52,11 +57,11 @@ public class VelocityTemplateMojo extends AbstractMojo {
   }
 
   private void evaluateTemplate(VelocityContext ctx, Template template, Transformation transformation,
-                                File propertyFile) throws MojoExecutionException {
+                                Properties commonProperties, File propertyFile) throws MojoExecutionException {
     try {
       StringSearchInterpolator interpolator = new StringSearchInterpolator();
       Map<Object, Object> properties = transformation.getCombinedProperties(project, transformation.isSplitNestedProperties(),
-                                                                            propertyFile);
+                                                                            commonProperties, propertyFile);
       interpolator.addValueSource(new MapBasedValueSource(properties));
       getLog().debug("Processing  transformation  for property file " + propertyFile + " and outputFile " +
                      template.getOutputFile() + ", properties=" + properties);
@@ -109,7 +114,8 @@ public class VelocityTemplateMojo extends AbstractMojo {
     return engine;
   }
 
-  protected VelocityContext createVelocityContext(Transformation transformation, File propertyFile) throws MojoExecutionException {
+  protected VelocityContext createVelocityContext(Transformation transformation, Properties commonProperties,
+                                                  File propertyFile) throws MojoExecutionException {
     VelocityContext ctx = new VelocityContext();
     ctx.put("project", project);
     ctx.put("system", System.getProperties());
@@ -118,7 +124,8 @@ public class VelocityTemplateMojo extends AbstractMojo {
     util.put("REF", "$");
     ctx.put("velocityUtil", util);
     getLog().debug("getting combined properties");
-    return new VelocityContext(transformation.getCombinedProperties(project, transformation.isSplitNestedProperties(), propertyFile), ctx);
+    return new VelocityContext(transformation.getCombinedProperties(project, transformation.isSplitNestedProperties(), commonProperties,
+                                                                    propertyFile), ctx);
   }
 
   @Override public String toString() {

@@ -30,6 +30,9 @@
               <goal>generate</goal>
             </goals>
             <configuration>
+              <properties>
+                <globalProperty1>globalProperty1Value</globalProperty1>
+              </properties>
               <transformations>
                 <transformation>
                   <splitNestedProperties>true</splitNestedProperties>
