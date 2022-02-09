@@ -8,10 +8,14 @@
 
 package com.peacetech.maven;
 
+import java.util.Properties;
+
 public class Template {
   private String templateFile;
   private String outputFile;
   private boolean copy;
+
+  private Properties properties;
 
   public String getTemplateFile() {
     return templateFile;
@@ -35,6 +39,14 @@ public class Template {
 
   public void setCopy(boolean copy) {
     this.copy = copy;
+  }
+
+  public Properties getProperties() {
+    return properties;
+  }
+
+  public void setProperties(Properties properties) {
+    this.properties = properties;
   }
 
   @Override public String toString() {

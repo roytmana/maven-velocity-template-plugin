@@ -97,7 +97,8 @@ public class Transformation {
 
   //todo properties and propertyFiles values must be resolved in case they have variables
   public Map<Object, Object> getCombinedProperties(MavenProject project, boolean splitNestedProperties,
-                                                   Properties commonProperties, File propertiesFile) throws MojoExecutionException {
+                                                   Properties commonProperties, File propertiesFile,
+                                                   Properties templateProperties) throws MojoExecutionException {
 
     Properties projectProperties = project.getProperties();
     Properties ret = new Properties();
@@ -164,6 +165,16 @@ public class Transformation {
           setNestedProperty(name, getTyped(properties.getProperty(name)), ret, true);
         } else {
           ret.put(name, getTyped(properties.getProperty(name)));
+        }
+      }
+    }
+
+    if (templateProperties != null) {
+      for (String name : templateProperties.stringPropertyNames()) {
+        if (splitNestedProperties) {
+          setNestedProperty(name, getTyped(templateProperties.getProperty(name)), ret, true);
+        } else {
+          ret.put(name, getTyped(templateProperties.getProperty(name)));
         }
       }
     }

@@ -41,15 +41,15 @@ public class VelocityTemplateMojo extends AbstractMojo {
 
   public void execute() throws MojoExecutionException {
     System.out.println("Global Properties: " + properties);
-    for (Transformation transformation : transformations) {
-      for (Template template : transformation.getTemplates()) {
+    for (Transformation transformation: transformations) {
+      for (Template template: transformation.getTemplates()) {
         if (transformation.getPropertyFiles().length == 0) {
-          VelocityContext ctx = createVelocityContext(transformation, properties, null);
-          evaluateTemplate(ctx, template, transformation, properties, null);
+          VelocityContext ctx = createVelocityContext(transformation, properties, null, template.getProperties());
+          evaluateTemplate(ctx, template, transformation, properties, null, template.getProperties());
         } else {
-          for (File propertyFile : transformation.getPropertyFiles()) {
-            VelocityContext ctx = createVelocityContext(transformation, properties, propertyFile);
-            evaluateTemplate(ctx, template, transformation, properties, propertyFile);
+          for (File propertyFile: transformation.getPropertyFiles()) {
+            VelocityContext ctx = createVelocityContext(transformation, properties, propertyFile, template.getProperties());
+            evaluateTemplate(ctx, template, transformation, properties, propertyFile, template.getProperties());
           }
         }
       }
@@ -57,11 +57,12 @@ public class VelocityTemplateMojo extends AbstractMojo {
   }
 
   private void evaluateTemplate(VelocityContext ctx, Template template, Transformation transformation,
-                                Properties commonProperties, File propertyFile) throws MojoExecutionException {
+                                Properties commonProperties, File propertyFile,
+                                Properties templateProperties) throws MojoExecutionException {
     try {
       StringSearchInterpolator interpolator = new StringSearchInterpolator();
       Map<Object, Object> properties = transformation.getCombinedProperties(project, transformation.isSplitNestedProperties(),
-                                                                            commonProperties, propertyFile);
+                                                                            commonProperties, propertyFile, templateProperties);
       interpolator.addValueSource(new MapBasedValueSource(properties));
       getLog().debug("Processing  transformation  for property file " + propertyFile + " and outputFile " +
                      template.getOutputFile() + ", properties=" + properties);
@@ -115,7 +116,7 @@ public class VelocityTemplateMojo extends AbstractMojo {
   }
 
   protected VelocityContext createVelocityContext(Transformation transformation, Properties commonProperties,
-                                                  File propertyFile) throws MojoExecutionException {
+                                                  File propertyFile, Properties templateProperties) throws MojoExecutionException {
     VelocityContext ctx = new VelocityContext();
     ctx.put("project", project);
     ctx.put("system", System.getProperties());
@@ -125,7 +126,7 @@ public class VelocityTemplateMojo extends AbstractMojo {
     ctx.put("velocityUtil", util);
     getLog().debug("getting combined properties");
     return new VelocityContext(transformation.getCombinedProperties(project, transformation.isSplitNestedProperties(), commonProperties,
-                                                                    propertyFile), ctx);
+                                                                    propertyFile, templateProperties), ctx);
   }
 
   @Override public String toString() {
