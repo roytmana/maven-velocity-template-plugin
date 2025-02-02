@@ -32,6 +32,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="IdProvider" IDEtalkID="9268FF57ADED9C90D79BB1B2EE3B5DF9" />
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
@@ -158,24 +159,6 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
-  <component name="PublishConfigData">
-    <serverData>
-      <paths name="root@dmzlx1">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="solr@ptilx4">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-    </serverData>
-  </component>
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
       <option name="id" value="central" />
@@ -202,7 +185,19 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
   <component name="libraryTable">
-    <library name="Maven: aopalliance:aopalliance:1.0">
+    <library name=".kts definition dependencies">
+      <CLASSES>
+        <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-reflect.jar!/" />
+        <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-script-runtime.jar!/" />
+        <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-stdlib.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-stdlib-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: aopalliance:aopalliance:1.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="aopalliance" artifactId="aopalliance" version="1.0" baseVersion="1.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/aopalliance/aopalliance/1.0/aopalliance-1.0.jar!/" />
       </CLASSES>
@@ -213,7 +208,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/aopalliance/aopalliance/1.0/aopalliance-1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.code.findbugs:jsr305:3.0.2">
+    <library name="Maven: com.google.code.findbugs:jsr305:3.0.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="com.google.code.findbugs" artifactId="jsr305" version="3.0.2" baseVersion="3.0.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar!/" />
       </CLASSES>
@@ -224,7 +220,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.errorprone:error_prone_annotations:2.1.3">
+    <library name="Maven: com.google.errorprone:error_prone_annotations:2.1.3" type="java-imported" external-system-id="Maven">
+      <properties groupId="com.google.errorprone" artifactId="error_prone_annotations" version="2.1.3" baseVersion="2.1.3" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/errorprone/error_prone_annotations/2.1.3/error_prone_annotations-2.1.3.jar!/" />
       </CLASSES>
@@ -235,7 +232,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/errorprone/error_prone_annotations/2.1.3/error_prone_annotations-2.1.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.guava:guava:25.1-android">
+    <library name="Maven: com.google.guava:guava:25.1-android" type="java-imported" external-system-id="Maven">
+      <properties groupId="com.google.guava" artifactId="guava" version="25.1-android" baseVersion="25.1-android" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/25.1-android/guava-25.1-android.jar!/" />
       </CLASSES>
@@ -246,7 +244,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/25.1-android/guava-25.1-android-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.inject:guice:no_aop:4.2.1">
+    <library name="Maven: com.google.inject:guice:no_aop:4.2.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="com.google.inject" artifactId="guice" version="4.2.1" baseVersion="4.2.1" classifier="no_aop" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/4.2.1/guice-4.2.1-no_aop.jar!/" />
       </CLASSES>
@@ -257,7 +256,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/inject/guice/4.2.1/guice-4.2.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.google.j2objc:j2objc-annotations:1.1">
+    <library name="Maven: com.google.j2objc:j2objc-annotations:1.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="com.google.j2objc" artifactId="j2objc-annotations" version="1.1" baseVersion="1.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/j2objc/j2objc-annotations/1.1/j2objc-annotations-1.1.jar!/" />
       </CLASSES>
@@ -268,7 +268,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/google/j2objc/j2objc-annotations/1.1/j2objc-annotations-1.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: commons-collections:commons-collections:3.2.1">
+    <library name="Maven: commons-collections:commons-collections:3.2.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="commons-collections" artifactId="commons-collections" version="3.2.1" baseVersion="3.2.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar!/" />
       </CLASSES>
@@ -279,7 +280,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: commons-io:commons-io:2.5">
+    <library name="Maven: commons-io:commons-io:2.5" type="java-imported" external-system-id="Maven">
+      <properties groupId="commons-io" artifactId="commons-io" version="2.5" baseVersion="2.5" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.5/commons-io-2.5.jar!/" />
       </CLASSES>
@@ -290,7 +292,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.5/commons-io-2.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: commons-lang:commons-lang:2.4">
+    <library name="Maven: commons-lang:commons-lang:2.4" type="java-imported" external-system-id="Maven">
+      <properties groupId="commons-lang" artifactId="commons-lang" version="2.4" baseVersion="2.4" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/commons-lang/commons-lang/2.4/commons-lang-2.4.jar!/" />
       </CLASSES>
@@ -301,7 +304,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-lang/commons-lang/2.4/commons-lang-2.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: javax.annotation:jsr250-api:1.0">
+    <library name="Maven: javax.annotation:jsr250-api:1.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="javax.annotation" artifactId="jsr250-api" version="1.0" baseVersion="1.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/javax/annotation/jsr250-api/1.0/jsr250-api-1.0.jar!/" />
       </CLASSES>
@@ -312,7 +316,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/javax/annotation/jsr250-api/1.0/jsr250-api-1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: javax.enterprise:cdi-api:1.0">
+    <library name="Maven: javax.enterprise:cdi-api:1.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="javax.enterprise" artifactId="cdi-api" version="1.0" baseVersion="1.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/javax/enterprise/cdi-api/1.0/cdi-api-1.0.jar!/" />
       </CLASSES>
@@ -323,7 +328,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/javax/enterprise/cdi-api/1.0/cdi-api-1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: javax.inject:javax.inject:1">
+    <library name="Maven: javax.inject:javax.inject:1" type="java-imported" external-system-id="Maven">
+      <properties groupId="javax.inject" artifactId="javax.inject" version="1" baseVersion="1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/javax/inject/javax.inject/1/javax.inject-1.jar!/" />
       </CLASSES>
@@ -334,7 +340,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/javax/inject/javax.inject/1/javax.inject-1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: junit:junit:4.13.2">
+    <library name="Maven: junit:junit:4.13.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="junit" artifactId="junit" version="4.13.2" baseVersion="4.13.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.13.2/junit-4.13.2.jar!/" />
       </CLASSES>
@@ -345,7 +352,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.13.2/junit-4.13.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.commons:commons-lang3:3.8.1">
+    <library name="Maven: org.apache.commons:commons-lang3:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.commons" artifactId="commons-lang3" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.jar!/" />
       </CLASSES>
@@ -356,7 +364,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven.plugin-tools:maven-plugin-annotations:3.6.2">
+    <library name="Maven: org.apache.maven.plugin-tools:maven-plugin-annotations:3.6.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven.plugin-tools" artifactId="maven-plugin-annotations" version="3.6.2" baseVersion="3.6.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/plugin-tools/maven-plugin-annotations/3.6.2/maven-plugin-annotations-3.6.2.jar!/" />
       </CLASSES>
@@ -367,7 +376,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/plugin-tools/maven-plugin-annotations/3.6.2/maven-plugin-annotations-3.6.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven.resolver:maven-resolver-api:1.6.2">
+    <library name="Maven: org.apache.maven.resolver:maven-resolver-api:1.6.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven.resolver" artifactId="maven-resolver-api" version="1.6.2" baseVersion="1.6.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/resolver/maven-resolver-api/1.6.2/maven-resolver-api-1.6.2.jar!/" />
       </CLASSES>
@@ -378,7 +388,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/resolver/maven-resolver-api/1.6.2/maven-resolver-api-1.6.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven.resolver:maven-resolver-impl:1.6.2">
+    <library name="Maven: org.apache.maven.resolver:maven-resolver-impl:1.6.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven.resolver" artifactId="maven-resolver-impl" version="1.6.2" baseVersion="1.6.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/resolver/maven-resolver-impl/1.6.2/maven-resolver-impl-1.6.2.jar!/" />
       </CLASSES>
@@ -389,7 +400,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/resolver/maven-resolver-impl/1.6.2/maven-resolver-impl-1.6.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven.resolver:maven-resolver-spi:1.6.2">
+    <library name="Maven: org.apache.maven.resolver:maven-resolver-spi:1.6.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven.resolver" artifactId="maven-resolver-spi" version="1.6.2" baseVersion="1.6.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/resolver/maven-resolver-spi/1.6.2/maven-resolver-spi-1.6.2.jar!/" />
       </CLASSES>
@@ -400,7 +412,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/resolver/maven-resolver-spi/1.6.2/maven-resolver-spi-1.6.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven.resolver:maven-resolver-util:1.6.2">
+    <library name="Maven: org.apache.maven.resolver:maven-resolver-util:1.6.2" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven.resolver" artifactId="maven-resolver-util" version="1.6.2" baseVersion="1.6.2" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/resolver/maven-resolver-util/1.6.2/maven-resolver-util-1.6.2.jar!/" />
       </CLASSES>
@@ -411,7 +424,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/resolver/maven-resolver-util/1.6.2/maven-resolver-util-1.6.2-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven.shared:maven-shared-utils:3.2.1">
+    <library name="Maven: org.apache.maven.shared:maven-shared-utils:3.2.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven.shared" artifactId="maven-shared-utils" version="3.2.1" baseVersion="3.2.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/shared/maven-shared-utils/3.2.1/maven-shared-utils-3.2.1.jar!/" />
       </CLASSES>
@@ -422,7 +436,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/shared/maven-shared-utils/3.2.1/maven-shared-utils-3.2.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven:maven-artifact:3.8.1">
+    <library name="Maven: org.apache.maven:maven-artifact:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven" artifactId="maven-artifact" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-artifact/3.8.1/maven-artifact-3.8.1.jar!/" />
       </CLASSES>
@@ -433,7 +448,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-artifact/3.8.1/maven-artifact-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven:maven-builder-support:3.8.1">
+    <library name="Maven: org.apache.maven:maven-builder-support:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven" artifactId="maven-builder-support" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-builder-support/3.8.1/maven-builder-support-3.8.1.jar!/" />
       </CLASSES>
@@ -444,7 +460,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-builder-support/3.8.1/maven-builder-support-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven:maven-core:3.8.1">
+    <library name="Maven: org.apache.maven:maven-core:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven" artifactId="maven-core" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-core/3.8.1/maven-core-3.8.1.jar!/" />
       </CLASSES>
@@ -455,7 +472,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-core/3.8.1/maven-core-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven:maven-model-builder:3.8.1">
+    <library name="Maven: org.apache.maven:maven-model-builder:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven" artifactId="maven-model-builder" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-model-builder/3.8.1/maven-model-builder-3.8.1.jar!/" />
       </CLASSES>
@@ -466,7 +484,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-model-builder/3.8.1/maven-model-builder-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven:maven-model:3.8.1">
+    <library name="Maven: org.apache.maven:maven-model:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven" artifactId="maven-model" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-model/3.8.1/maven-model-3.8.1.jar!/" />
       </CLASSES>
@@ -477,7 +496,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-model/3.8.1/maven-model-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven:maven-plugin-api:3.8.1">
+    <library name="Maven: org.apache.maven:maven-plugin-api:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven" artifactId="maven-plugin-api" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-plugin-api/3.8.1/maven-plugin-api-3.8.1.jar!/" />
       </CLASSES>
@@ -488,7 +508,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-plugin-api/3.8.1/maven-plugin-api-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven:maven-repository-metadata:3.8.1">
+    <library name="Maven: org.apache.maven:maven-repository-metadata:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven" artifactId="maven-repository-metadata" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-repository-metadata/3.8.1/maven-repository-metadata-3.8.1.jar!/" />
       </CLASSES>
@@ -499,7 +520,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-repository-metadata/3.8.1/maven-repository-metadata-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven:maven-resolver-provider:3.8.1">
+    <library name="Maven: org.apache.maven:maven-resolver-provider:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven" artifactId="maven-resolver-provider" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-resolver-provider/3.8.1/maven-resolver-provider-3.8.1.jar!/" />
       </CLASSES>
@@ -510,7 +532,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-resolver-provider/3.8.1/maven-resolver-provider-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven:maven-settings-builder:3.8.1">
+    <library name="Maven: org.apache.maven:maven-settings-builder:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven" artifactId="maven-settings-builder" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-settings-builder/3.8.1/maven-settings-builder-3.8.1.jar!/" />
       </CLASSES>
@@ -521,7 +544,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-settings-builder/3.8.1/maven-settings-builder-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.maven:maven-settings:3.8.1">
+    <library name="Maven: org.apache.maven:maven-settings:3.8.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.maven" artifactId="maven-settings" version="3.8.1" baseVersion="3.8.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-settings/3.8.1/maven-settings-3.8.1.jar!/" />
       </CLASSES>
@@ -532,7 +556,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/maven/maven-settings/3.8.1/maven-settings-3.8.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.apache.velocity:velocity:1.7">
+    <library name="Maven: org.apache.velocity:velocity:1.7" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.apache.velocity" artifactId="velocity" version="1.7" baseVersion="1.7" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/velocity/velocity/1.7/velocity-1.7.jar!/" />
       </CLASSES>
@@ -543,7 +568,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/apache/velocity/velocity/1.7/velocity-1.7-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.checkerframework:checker-compat-qual:2.0.0">
+    <library name="Maven: org.checkerframework:checker-compat-qual:2.0.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.checkerframework" artifactId="checker-compat-qual" version="2.0.0" baseVersion="2.0.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/checkerframework/checker-compat-qual/2.0.0/checker-compat-qual-2.0.0.jar!/" />
       </CLASSES>
@@ -554,7 +580,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/checkerframework/checker-compat-qual/2.0.0/checker-compat-qual-2.0.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.14">
+    <library name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.14" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.codehaus.mojo" artifactId="animal-sniffer-annotations" version="1.14" baseVersion="1.14" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14.jar!/" />
       </CLASSES>
@@ -565,7 +592,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.codehaus.plexus:plexus-classworlds:2.6.0">
+    <library name="Maven: org.codehaus.plexus:plexus-classworlds:2.6.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.codehaus.plexus" artifactId="plexus-classworlds" version="2.6.0" baseVersion="2.6.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/plexus/plexus-classworlds/2.6.0/plexus-classworlds-2.6.0.jar!/" />
       </CLASSES>
@@ -576,7 +604,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/plexus/plexus-classworlds/2.6.0/plexus-classworlds-2.6.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.codehaus.plexus:plexus-component-annotations:2.1.0">
+    <library name="Maven: org.codehaus.plexus:plexus-component-annotations:2.1.0" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.codehaus.plexus" artifactId="plexus-component-annotations" version="2.1.0" baseVersion="2.1.0" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/plexus/plexus-component-annotations/2.1.0/plexus-component-annotations-2.1.0.jar!/" />
       </CLASSES>
@@ -587,7 +616,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/plexus/plexus-component-annotations/2.1.0/plexus-component-annotations-2.1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.codehaus.plexus:plexus-interpolation:1.25">
+    <library name="Maven: org.codehaus.plexus:plexus-interpolation:1.25" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.codehaus.plexus" artifactId="plexus-interpolation" version="1.25" baseVersion="1.25" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/plexus/plexus-interpolation/1.25/plexus-interpolation-1.25.jar!/" />
       </CLASSES>
@@ -598,7 +628,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/plexus/plexus-interpolation/1.25/plexus-interpolation-1.25-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.codehaus.plexus:plexus-utils:3.4.1">
+    <library name="Maven: org.codehaus.plexus:plexus-utils:3.4.1" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.codehaus.plexus" artifactId="plexus-utils" version="3.4.1" baseVersion="3.4.1" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/plexus/plexus-utils/3.4.1/plexus-utils-3.4.1.jar!/" />
       </CLASSES>
@@ -609,7 +640,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/plexus/plexus-utils/3.4.1/plexus-utils-3.4.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.eclipse.sisu:org.eclipse.sisu.inject:0.3.4">
+    <library name="Maven: org.eclipse.sisu:org.eclipse.sisu.inject:0.3.4" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.eclipse.sisu" artifactId="org.eclipse.sisu.inject" version="0.3.4" baseVersion="0.3.4" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.4/org.eclipse.sisu.inject-0.3.4.jar!/" />
       </CLASSES>
@@ -620,7 +652,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/sisu/org.eclipse.sisu.inject/0.3.4/org.eclipse.sisu.inject-0.3.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.eclipse.sisu:org.eclipse.sisu.plexus:0.3.4">
+    <library name="Maven: org.eclipse.sisu:org.eclipse.sisu.plexus:0.3.4" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.eclipse.sisu" artifactId="org.eclipse.sisu.plexus" version="0.3.4" baseVersion="0.3.4" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.4/org.eclipse.sisu.plexus-0.3.4.jar!/" />
       </CLASSES>
@@ -631,7 +664,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/sisu/org.eclipse.sisu.plexus/0.3.4/org.eclipse.sisu.plexus-0.3.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.hamcrest:hamcrest-core:1.3">
+    <library name="Maven: org.hamcrest:hamcrest-core:1.3" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.hamcrest" artifactId="hamcrest-core" version="1.3" baseVersion="1.3" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar!/" />
       </CLASSES>
@@ -642,7 +676,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.slf4j:slf4j-api:1.7.29">
+    <library name="Maven: org.slf4j:slf4j-api:1.7.29" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.slf4j" artifactId="slf4j-api" version="1.7.29" baseVersion="1.7.29" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.29/slf4j-api-1.7.29.jar!/" />
       </CLASSES>
@@ -653,7 +688,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.29/slf4j-api-1.7.29-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.sonatype.plexus:plexus-cipher:1.4">
+    <library name="Maven: org.sonatype.plexus:plexus-cipher:1.4" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.sonatype.plexus" artifactId="plexus-cipher" version="1.4" baseVersion="1.4" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4.jar!/" />
       </CLASSES>
@@ -664,7 +700,8 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/sonatype/plexus/plexus-cipher/1.4/plexus-cipher-1.4-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.sonatype.plexus:plexus-sec-dispatcher:1.4">
+    <library name="Maven: org.sonatype.plexus:plexus-sec-dispatcher:1.4" type="java-imported" external-system-id="Maven">
+      <properties groupId="org.sonatype.plexus" artifactId="plexus-sec-dispatcher" version="1.4" baseVersion="1.4" />
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/sonatype/plexus/plexus-sec-dispatcher/1.4/plexus-sec-dispatcher-1.4.jar!/" />
       </CLASSES>

@@ -14,6 +14,7 @@ public class Template {
   private String templateFile;
   private String outputFile;
   private boolean copy;
+  private boolean skipIfAbsent;
 
   private Properties properties;
 
@@ -39,6 +40,14 @@ public class Template {
 
   public void setCopy(boolean copy) {
     this.copy = copy;
+  }
+
+  public boolean isSkipIfAbsent() {
+    return skipIfAbsent;
+  }
+
+  public void setSkipIfAbsent(boolean skipIfAbsent) {
+    this.skipIfAbsent = skipIfAbsent;
   }
 
   public Properties getProperties() {

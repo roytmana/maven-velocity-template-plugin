@@ -75,7 +75,12 @@ public class VelocityTemplateMojo extends AbstractMojo {
       }
 
       File templateFile = new File(interpolator.interpolate(template.getTemplateFile()));
-
+      //todo implement template file pointing to a directory, require output be a directory as well
+      if (!templateFile.exists()) {
+        if (!template.isSkipIfAbsent()) {
+          throw new MojoExecutionException("Template file " + templateFile + " could not be found");
+        }
+      }
       if (template.isCopy()) {
         getLog().info("Copying " + templateFile + " to " + outputFile);
         Files.copy(templateFile.toPath(), outputFile.toPath(), REPLACE_EXISTING);
