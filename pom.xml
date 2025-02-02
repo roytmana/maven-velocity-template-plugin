@@ -4,7 +4,7 @@
 
   <groupId>com.peacetech.maven</groupId>
   <artifactId>velocity-template-plugin</artifactId>
-  <version>0.2.6</version>
+  <version>0.2.7</version>
   <packaging>maven-plugin</packaging>
 
   <name>velocity-template-plugin</name>

@@ -79,6 +79,8 @@ public class VelocityTemplateMojo extends AbstractMojo {
       if (!templateFile.exists()) {
         if (!template.isSkipIfAbsent()) {
           throw new MojoExecutionException("Template file " + templateFile + " could not be found");
+        } else {
+          return;
         }
       }
       if (template.isCopy()) {
